@@ -1,5 +1,7 @@
 package banking;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -107,16 +109,39 @@ public class Bank {
      * @param pin
      * @return
      */
-    public User addUser(String firstName, String lastName, String pin , String email) {
+    public User addUser(String firstName, String lastName, String pin, String email) {
         User newUser = new User(firstName, lastName, pin, this);
         this.users.add(newUser);
 
         /**
          * Create newAccount for the uer
          */
-        Account newAccount = new Account("saving", newUser,this);
+        Account newAccount = new Account("saving", newUser, this);
         newUser.addAccount(newAccount);
         this.accounts.add(newAccount);
         return newUser;
     }
+
+    /**
+     * Get user associated with the user ID and pin if valid to login account
+     *
+     * @param userID
+     * @param pin
+     * @return
+     */
+    public User userLogin(String userID, String pin) {
+        /**
+         * First search user from the list of other user
+         */
+        for (User user : this.users) {
+            if (user.getUUID().compareTo(userID) == 0 && user.validatePin(pin)){
+                return user;
+            }
+        }
+        return null;
+    }
+
+
 }
+
+

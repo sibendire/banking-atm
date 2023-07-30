@@ -41,4 +41,19 @@ public class User {
     public String getUUID() {
         return this.uuid;
     }
+
+
+    public boolean validatePin(String pin) {
+        try {
+            MessageDigest messageDigest = MessageDigest.getInstance("MD5");
+            return MessageDigest.isEqual(messageDigest.digest(pin.getBytes()),
+            this.pinHah);
+        } catch (NoSuchAlgorithmException e) {
+            System.err.println("Invalid userID or pin ");
+            e.printStackTrace();
+            System.exit(1);
+        }
+        return false;
+    }
 }
+
