@@ -107,7 +107,7 @@ public class Bank {
      * @param pin
      * @return
      */
-    public User addUser(String firstName, String lastName, String pin) {
+    public User addUser(String firstName, String lastName, String pin , String email) {
         User newUser = new User(firstName, lastName, pin, this);
         this.users.add(newUser);
 
