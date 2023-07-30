@@ -15,6 +15,10 @@ public class Bank {
      *
      * @return
      */
+    public Bank(String name){
+        this.name = name;
+
+    }
 
     public String getNewUserUUID() {
         // init
