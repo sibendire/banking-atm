@@ -9,6 +9,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         Bank theBank = new Bank("Rubaga");
+        theBank.userLogin("1212","1234");
 
     }
 }
