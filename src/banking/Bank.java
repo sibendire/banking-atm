@@ -23,7 +23,7 @@ public class Bank {
 
         /**
          *    Continue looping until the condition meets the uuid
-          */
+         */
 
         do {
             // Generate the uuid
@@ -50,6 +50,7 @@ public class Bank {
 
     /**
      * Generate the uuid for an account
+     *
      * @return
      */
 
@@ -62,7 +63,7 @@ public class Bank {
 
         /**
          * Continue looping until the condition is true
-          */
+         */
 
 
         do {
@@ -90,6 +91,7 @@ public class Bank {
 
     /**
      * Add accounts to the bank
+     *
      * @param account
      */
 
@@ -98,14 +100,23 @@ public class Bank {
     }
 
     /**
-     * A
+     * Create a new user in the bank
+     *
      * @param firstName
      * @param lastName
      * @param pin
      * @return
      */
-    public User addUser(String firstName, String lastName, String pin){
-        User newUser = new User(firstName,lastName,pin,this);
-        return  this.addUser(firstName,lastName,pin);
+    public User addUser(String firstName, String lastName, String pin) {
+        User newUser = new User(firstName, lastName, pin, this);
+        this.users.add(newUser);
+
+        /**
+         * Create newAccount for the uer
+         */
+        Account newAccount = new Account("saving", newUser,this);
+        newUser.addAccount(newAccount);
+        this.accounts.add(newAccount);
+        return newUser;
     }
 }
