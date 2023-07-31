@@ -26,7 +26,7 @@ public class Bank {
         // init
         String uuid;
         Random random = new Random();
-        int leg = 6;
+        int leg = 20;
         boolean nonUnique;
 
         /**
@@ -66,7 +66,7 @@ public class Bank {
         // init
         String uuid;
         Random random = new Random();
-        int leg = 6;
+        int leg = 10;
         boolean nonUnique;
 
         /**
@@ -115,7 +115,7 @@ public class Bank {
      * @param pin
      * @return
      */
-    public User addUser(String firstName, String lastName, String pin, String email) {
+    public User addUser(String firstName, String lastName, String pin) {
         User newUser = new User(firstName, lastName, pin, this);
         this.users.add(newUser);
 
