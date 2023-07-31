@@ -47,7 +47,7 @@ public class User {
         try {
             MessageDigest messageDigest = MessageDigest.getInstance("MD5");
             return MessageDigest.isEqual(messageDigest.digest(pin.getBytes()),
-            this.pinHah);
+                    this.pinHah);
         } catch (NoSuchAlgorithmException e) {
             System.err.println("Invalid userID or pin ");
             e.printStackTrace();

@@ -32,7 +32,7 @@ public class Transaction {
      */
     public Transaction(double amount, Account inAccount, String memo) {
         // Call the two arg constructor
-        this(amount,inAccount);
+        this(amount, inAccount);
         this.memo = memo;
 
     }
