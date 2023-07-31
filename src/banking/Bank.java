@@ -17,6 +17,8 @@ public class Bank {
      */
     public Bank(String name){
         this.name = name;
+        this.users = new ArrayList<User>();
+        this.accounts = new ArrayList<Account>();
 
     }
 
