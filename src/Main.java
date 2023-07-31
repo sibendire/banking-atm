@@ -46,6 +46,6 @@ public class Main {
     }
 
     private static User mainMenuPrompt(Bank theBank, Scanner scanner) {
-        return
+        return null;// to be changed soon
     }
 }
