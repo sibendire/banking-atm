@@ -15,7 +15,7 @@ public class Bank {
      *
      * @return
      */
-    public Bank(String name){
+    public Bank(String name) {
         this.name = name;
         this.users = new ArrayList<User>();
         this.accounts = new ArrayList<Account>();
@@ -29,9 +29,8 @@ public class Bank {
         int leg = 20;
         boolean nonUnique;
 
-        /**
-         *    Continue looping until the condition meets the uuid
-         */
+        // Continue looping until the condition meets the uuid
+
 
         do {
             // Generate the uuid
@@ -69,9 +68,7 @@ public class Bank {
         int leg = 10;
         boolean nonUnique;
 
-        /**
-         * Continue looping until the condition is true
-         */
+        // Continue looping until the condition is true
 
 
         do {
@@ -119,9 +116,8 @@ public class Bank {
         User newUser = new User(firstName, lastName, pin, this);
         this.users.add(newUser);
 
-        /**
-         * Create newAccount for the uer
-         */
+        // Create newAccount for the uer
+
         Account newAccount = new Account("saving", newUser, this);
         newUser.addAccount(newAccount);
         this.accounts.add(newAccount);
@@ -136,11 +132,10 @@ public class Bank {
      * @return
      */
     public User userLogin(String userID, String pin) {
-        /**
-         * First search user from the list of other user
-         */
+        // First search user from the list of other user
+
         for (User user : this.users) {
-            if (user.getUUID().compareTo(userID) == 0 && user.validatePin(pin)){
+            if (user.getUUID().compareTo(userID) == 0 && user.validatePin(pin)) {
                 return user;
             }
         }
