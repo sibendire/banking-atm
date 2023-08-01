@@ -15,10 +15,9 @@ public class User {
         this.firstName = firstName;
         this.lastName = lastName;
 
-        /**
-         * Stores the pin MD5 hash rather than the original values for the security reasons
-         *
-         */
+
+         // Stores the pin MD5 hash rather than the original values for the security reasons
+
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
             this.pinHah = md.digest(pin.getBytes());
