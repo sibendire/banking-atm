@@ -9,25 +9,27 @@ public class Account {
     private User holder;
     private ArrayList<Transaction> transactions;
 
+    /**
+     *  Create account constructor
+     * @param name
+     * @param holder
+     * @param theBank
+     */
     public Account(String name, User holder, Bank theBank) {
-        /**
-         * set the account name and holder
-         */
+
+         // set the account name and holder
+
         this.name = name;
         this.holder = holder;
-        /**
-         * create new account uuid
-         */
+
+         // create new account uuid
+
         this.uuid = theBank.getNewAccountUUID();
-        /**
-         * create the list of transactions
-         */
+
+         /// create the list of transactions
+
         this.transactions = new ArrayList<Transaction>();
-        /**
-         * add account to the holder and the bank
-         */
-        holder.addAccount(this);
-        theBank.addAccount(this);
+
     }
 
     public String getUUID() {
