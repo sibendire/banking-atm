@@ -26,7 +26,7 @@ public class Bank {
         // init
         String uuid;
         Random random = new Random();
-        int leg = 20;
+        int leg = 30;
         boolean nonUnique;
 
         // Continue looping until the condition meets the uuid
@@ -135,6 +135,9 @@ public class Bank {
 
     public void addAccount(Account newAccount) {
         this.accounts.add(newAccount);
+    }
+    public String getName(){
+        return this.name;
     }
 }
 

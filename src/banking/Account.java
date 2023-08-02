@@ -26,13 +26,29 @@ public class Account {
 
         this.uuid = theBank.getNewAccountUUID();
 
-         /// create the list of transactions
+         // create the list of transactions made in a particular account
 
         this.transactions = new ArrayList<Transaction>();
 
     }
 
+    /**
+     * Create a method get uuid for the account
+     * @return
+     */
     public String getUUID() {
         return this.uuid;
+    }
+
+    public String getSummaryLine() {
+        // first get the account balance
+        double balance = this.getBalance();
+
+        // Format the summary line depends on whether the balance is negative
+        if (balance >= 0){
+            return String.format("%s: $%.02f:%s", this.uuid,balance,this.name);
+        }else {
+            return String.format("%s:$(%.02f):%s", this.uuid,balance,this.name);
+        }
     }
 }
