@@ -106,6 +106,7 @@ public class Main {
 
 
 
+
     private static void showTransactionHistory(User curUser, Scanner scanner) {
         int theAccount;
         // ge the account whose transaction you want to see
@@ -179,6 +180,94 @@ public class Main {
                 curUser.getAcctUUID(toAccount)));
         curUser.addAccountTransaction(toAccount, amount,String.format("Transfer to account",
                 curUser.getAcctUUID(fromAccount)));
+
+
+    }
+    private static void withdrewFunds(User curUser, Scanner scanner) {
+        // init
+        int fromAccount;
+        double amount;
+        double actualBalance;
+        String memo;
+
+        // get the amount to transfer from the account
+        do {
+
+
+            System.out.println("Enter the number (1-%d) of the account\n" +
+                    "your transferring money from");
+            fromAccount = scanner.nextInt() - 1;
+            if (fromAccount < 0 || fromAccount >= curUser.numAccont()){
+                System.out.println("Invalid account !! Please valid account!");
+
+            }
+        }while (fromAccount < 0 || fromAccount >= curUser.numAccont());
+        actualBalance = curUser.getActualBalance(fromAccount);
+        // get the amount to transfer
+        do {
+            System.out.printf("Enter the amount to transfer: (max %$ . 02f):$",actualBalance);
+            amount = scanner.nextInt() - 1;
+            if (amount < 0){
+                System.out.println("Amount should be greater than zero");
+            } else if (amount > actualBalance) {
+                System.out.printf("You have insufficient fund on your account\n" +
+                        "please check your balance first $%.02f.\n",actualBalance);
+
+            }
+
+
+        }while (amount < 0 || amount > actualBalance);
+        // global up rest of the previous input
+        scanner.nextLine();
+        // get memo
+        System.out.println("Enter a memo:");
+        memo = scanner.nextLine();
+        // get withdraw
+        curUser.addAccountTransaction(fromAccount,-1*amount,memo);
+
+
+
+    }
+    private static void depositFunds(User curUser, Scanner scanner) {
+        int toAccount;
+        double amount;
+        double actualBalance;
+        String memo;
+
+        // get the amount to transfer from the account
+        do {
+
+
+            System.out.println("Enter the number (1-%d) of the account\n" +
+                    "your transferring money from");
+            toAccount = scanner.nextInt() - 1;
+            if (toAccount < 0 || toAccount >= curUser.numAccont()){
+                System.out.println("Invalid account !! Please valid account!");
+
+            }
+        }while (toAccount < 0 || toAccount >= curUser.numAccont());
+        actualBalance = curUser.getActualBalance(toAccount);
+        // get the amount to transfer
+        do {
+            System.out.printf("Enter the amount to transfer: (max %$ . 02f):$",actualBalance);
+            amount = scanner.nextInt() - 1;
+            if (amount < 0){
+                System.out.println("Amount should be greater than zero");
+            } else if (amount > actualBalance) {
+                System.out.printf("You have insufficient fund on your account\n" +
+                        "please check your balance first $%.02f.\n",actualBalance);
+
+            }
+
+
+        }while (amount < 0 || amount > actualBalance);
+        // global up rest of the previous input
+        scanner.nextLine();
+        // get memo
+        System.out.println("Enter a memo:");
+        memo = scanner.nextLine();
+        // get withdraw
+        curUser.addAccountTransaction(toAccount,amount,memo);
 
 
     }

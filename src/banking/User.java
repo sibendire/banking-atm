@@ -63,7 +63,7 @@ public class User {
      *  Accounts summary
      */
     public void printAccountSummary() {
-        System.out.printf("\n\n %s's accounts summary",this.firstName);
+        System.out.printf("\n\n %s accounts summary",this.firstName);
         for (int account = 0; account < this.accounts.size(); account++ ){
             System.out.printf("%d %s\n",this.accounts.get(account).getSummaryLine());
         }
@@ -82,7 +82,12 @@ public class User {
 
     }
 
-    public void addAccountTransaction(int fromAccount, double v, String transfer_to_account) {
+    public void addAccountTransaction(int accountIndex, double amount, String memo) {
+        this.accounts.get(accountIndex).addTransaction(amount,memo);
+    }
+
+    public String getAcctUUID(int accountIndex) {
+       return this.accounts.get(accountIndex).getUUID();
     }
 }
 
