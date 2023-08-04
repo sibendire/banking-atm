@@ -51,4 +51,20 @@ public class Account {
             return String.format("%s:$(%.02f):%s", this.uuid,balance,this.name);
         }
     }
+
+    double getBalance() {
+        double balance = 0;
+        for (Transaction transaction : this.transactions){
+            balance += transaction.getAmount();
+        }
+        return balance;
+    }
+
+    public void printTransactionHistory() {
+        System.out.printf("\n Transaction for the Account" , this.uuid);
+        for (int transaction = this.transactions.size()-1; transaction >= 0; transaction--){
+            System.out.printf(this.transactions.get(transaction).getSummaryLine());
+        }
+        System.out.println();
+    }
 }

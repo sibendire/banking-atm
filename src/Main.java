@@ -103,4 +103,50 @@ public class Main {
              Main.printUserMenu(curUser,scanner);
          }
     }
+
+
+
+    private static void showTransactionHistory(User curUser, Scanner scanner) {
+        int theAccount;
+        // ge the account whose transaction you want to see
+        do {
+            System.out.printf("Enter the number (1-%d) of the account \n" +
+                    "whose transaction you want to see: ", curUser.numAccont() );
+            theAccount = scanner.nextInt()-1;
+            if (theAccount < 0 || theAccount >= curUser.numAccont()){
+                System.out.println("Invalid account !! please try again");
+            }
+
+        }while (theAccount < 0 || theAccount >= curUser.numAccont());
+        // print the transaction history
+        curUser.printAccountTransactionHistory(curUser.numAccont());
+    }
+
+    /**
+     * Transferring funds
+     * @param curUser
+     * @param scanner
+     */
+    private static void transferFunds(User curUser, Scanner scanner) {
+        //inits
+        int fromAccount;
+        int toAccount;
+        double amount;
+        double actualBalance;
+
+        // get the amount to transfer from the account
+        do {
+
+
+            System.out.println("Enter the number (1-%d) of the account\n" +
+                    "your transferring money from");
+            fromAccount = scanner.nextInt() - 1;
+            if (fromAccount < 0 || fromAccount >= curUser.numAccont()){
+                System.out.println("Invalid account !! Please valid account!");
+
+            }
+        }while (fromAccount < 0 || fromAccount >= curUser.numAccont());
+        actualBalance = curUser.getActualBalance(fromAccount);
+
+    }
 }

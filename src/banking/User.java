@@ -68,5 +68,18 @@ public class User {
             System.out.printf("%d %s\n",this.accounts.get(account).getSummaryLine());
         }
     }
+
+    public int numAccont() {
+        return this.accounts.size();
+    }
+
+    public void printAccountTransactionHistory(int accountIndex) {
+         this.accounts.get(accountIndex).printTransactionHistory();
+    }
+
+    public double getActualBalance(int accountIndex) {
+        return  this.accounts.get(accountIndex).getBalance();
+
+    }
 }
 
