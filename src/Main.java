@@ -148,5 +148,38 @@ public class Main {
         }while (fromAccount < 0 || fromAccount >= curUser.numAccont());
         actualBalance = curUser.getActualBalance(fromAccount);
 
+        do {
+
+
+            System.out.println("Enter the number (1-%d) of the account\n" +
+                    "your transferring money to");
+            toAccount = scanner.nextInt() - 1;
+            if (toAccount < 0 || toAccount >= curUser.numAccont()){
+                System.out.println("Invalid account !! Please valid account!");
+
+            }
+        }while (toAccount < 0 || toAccount >= curUser.numAccont());
+
+         // get the amount to transfer
+        do {
+            System.out.printf("Enter the amount to transfer: (max %$ . 02f):$",actualBalance);
+            amount = scanner.nextInt() - 1;
+            if (amount < 0){
+                System.out.println("Amount should be greater than zero");
+            } else if (amount > actualBalance) {
+                System.out.printf("You have insufficient fund on your account\n" +
+                        "please check your balance first $%.02f.\n",actualBalance);
+
+            }
+
+
+        }while (amount < 0 || amount > actualBalance);
+        // you can now do the transfer
+        curUser.addAccountTransaction(fromAccount, -1*amount,String.format("Transfer to account",
+                curUser.getAcctUUID(toAccount)));
+        curUser.addAccountTransaction(toAccount, amount,String.format("Transfer to account",
+                curUser.getAcctUUID(fromAccount)));
+
+
     }
 }

@@ -81,5 +81,8 @@ public class User {
         return  this.accounts.get(accountIndex).getBalance();
 
     }
+
+    public void addAccountTransaction(int fromAccount, double v, String transfer_to_account) {
+    }
 }
 
