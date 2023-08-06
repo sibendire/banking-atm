@@ -65,7 +65,7 @@ public class User {
     public void printAccountSummary() {
         System.out.printf("\n\n %s accounts summary",this.firstName);
         for (int account = 0; account < this.accounts.size(); account++ ){
-            System.out.printf("%d %s\n",this.accounts.get(account).getSummaryLine());
+            System.out.printf("%s\n",this.accounts.get(account).getSummaryLine());
         }
     }
 
